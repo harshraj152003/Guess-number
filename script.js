@@ -41,12 +41,11 @@ function MatchTheGuess() {
 }
 
 function restartGame() {
-    // Reset the game state
     randomNumber = Math.floor(Math.random() * 10) + 1;
     remainingGuess.textContent = 4;
     previousGuess.textContent = "Previous guesses: ";
     displayContent.textContent = "";
     displayContent.className = "";
-    restartButton.style.display = "none";  // Hide the Restart button
-    document.getElementById('userInput').value = "";  // Clear the input field
+    restartButton.style.display = "none"; 
+    document.getElementById('userInput').value = "";
 }
