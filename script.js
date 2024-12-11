@@ -8,7 +8,7 @@ function MatchTheGuess() {
     if (parseInt(remainingGuess.textContent) <= 0) {
         displayContent.textContent = "No attempts left! Please restart the game.";
         displayContent.className = "Invalid";
-        restartButton.style.display = "block";  // Show the Restart button
+        restartButton.style.display = "block";
         return;
     }
 
@@ -17,6 +17,7 @@ function MatchTheGuess() {
     if (isNaN(input) || input < 1 || input > 10) {
         displayContent.textContent = "Please enter a valid number between 1 and 10!";
         displayContent.className = "Invalid";
+        document.getElementById('userInput').value = ""; 
         return;
     }
 
@@ -26,17 +27,19 @@ function MatchTheGuess() {
         displayContent.textContent = "Congratulations! You've guessed the correct number!";
         displayContent.className = "valid";
         remainingGuess.textContent = 0;
-        restartButton.style.display = "block";  // Show the Restart button
+        restartButton.style.display = "block"; 
     } else {
         displayContent.textContent = `Try again! You have ${remainingGuess.textContent} attempts left.`;
         previousGuess.textContent += input + " ";
         displayContent.className = "try";
+        document.getElementById('userInput').value = "";
     }
 
     if (parseInt(remainingGuess.textContent) === 0 && input !== randomNumber) {
         displayContent.textContent = `Game Over! The correct number was ${randomNumber}.`;
         displayContent.className = "gameOver";
-        restartButton.style.display = "block";  // Show the Restart button
+        restartButton.style.display = "block";
+        document.getElementById('userInput').value = ""; 
     }
 }
 
@@ -47,5 +50,5 @@ function restartGame() {
     displayContent.textContent = "";
     displayContent.className = "";
     restartButton.style.display = "none"; 
-    document.getElementById('userInput').value = "";
+    document.getElementById('userInput').value = ""; 
 }
